@@ -8,3 +8,6 @@ To use this app, clone the repository, run shotgun in your terminal, and then fo
 
 ## Contributing
 If you'd like to add a feature, please submit a PR.
+
+## License
+View the [license](https://opensource.org/licenses/MIT).
