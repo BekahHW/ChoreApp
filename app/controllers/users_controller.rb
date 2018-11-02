@@ -12,13 +12,13 @@ class UsersController < ApplicationController
     @user = User.new(:username => params[:username], :email => params[:username], :password => params[:password])
 
     if @user.save
-      redirect '/login'
+      redirect '/users/index'
     else
       redirect '/failure'
     end
   end
 
-  post '/login' do
+  post '/users/index' do
     @user = User.find_by(:username => params[:username])
 
     if @user && @user.authenticate(params[:password])
@@ -33,7 +33,7 @@ class UsersController < ApplicationController
     if logged_in?
       erb :success
     else
-      redirect '/login'
+      redirect '/users/index'
     end
   end
 
