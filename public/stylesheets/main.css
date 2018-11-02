@@ -116,36 +116,36 @@
   /* house styling */
 
   body {
-  padding: 50px;
+  padding: 10px;
 }
 
 /*CSS to House */
 .house {
-  width: 0px;
-  height: 0px;
-  border-left: 60px solid transparent;
-  border-right: 60px solid transparent;
-  border-bottom: 50px solid #AAAACC;
+  width: 5%;
+  height: 5%;
+  border-left: 6%solid transparent;
+  border-right: 6% solid transparent;
+  border-bottom: 6% solid #AAAACC;
 }
 
 .house:after {
   position: absolute;
   content: '';
-  width: 100px;
-  height: 60px;
+  width: 10%;
+  height: 6%;
   background: #AAC;
-  top: 100px;
-  left: 60px;
+  top: 10%;
+  left: 6%;
 }
 
 .house:before {
   position: absolute;
   content: '';
-  width: 10px;
-  height: 30px;
+  width: 5%;
+  height: 7%;
   background: #AAC;
-  top: 70px;
-  left: 145px;
+  top: 7%;
+  left: 15%;
 }
 
 }
