@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
-  get '/' do
-    erb :'/users/index'
+  get '/login' do
+    erb :'/users/login'
   end
 
   get '/users/new' do
@@ -12,13 +12,13 @@ class UsersController < ApplicationController
     @user = User.new(:username => params[:username], :email => params[:username], :password => params[:password])
 
     if @user.save
-      redirect '/users/index'
+      redirect '/login'
     else
       redirect '/failure'
     end
   end
 
-  post '/users/index' do
+  post '/login' do
     @user = User.find_by(:username => params[:username])
 
     if @user && @user.authenticate(params[:password])
@@ -33,7 +33,7 @@ class UsersController < ApplicationController
     if logged_in?
       erb :success
     else
-      redirect '/users/index'
+      redirect '/login'
     end
   end
 
