@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   get '/' do
-    erb :index
+    erb :'/users/index'
   end
 
   get '/users/new' do
