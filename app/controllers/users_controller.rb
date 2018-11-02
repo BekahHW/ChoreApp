@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   end
 
   get '/users/new' do
-    erb :new
+    erb :'/users/new'
   end
 
   post '/users/new' do
