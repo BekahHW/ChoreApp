@@ -12,9 +12,9 @@ class UsersController < ApplicationController
     @user = User.new(:username => params[:username], :email => params[:username], :password => params[:password])
 
     if @user.save
-      redirect '/login'
+      redirect '/users/login'
     else
-      redirect '/failure'
+      redirect '/users/failure'
     end
   end
 
@@ -25,7 +25,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect '/success'
     else
-      redirect '/failure'
+      redirect '/users/failure'
     end
   end
 
@@ -33,12 +33,12 @@ class UsersController < ApplicationController
     if logged_in?
       erb :success
     else
-      redirect '/login'
+      redirect '/users/login'
     end
   end
 
-  get '/failure' do
-    erb :failure
+  get '/users/failure' do
+    erb :'/users/failure'
   end
 
   get '/logout' do
