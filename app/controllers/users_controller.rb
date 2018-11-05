@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  get '/login' do
+  get '/users/login' do
     erb :'/users/login'
   end
 
@@ -18,7 +18,7 @@ class UsersController < ApplicationController
     end
   end
 
-  post '/login' do
+  post '/users/login' do
     @user = User.find_by(:username => params[:username])
 
     if @user && @user.authenticate(params[:password])

@@ -113,5 +113,8 @@
     line-height: 24px;
   }
 
-
+/* index */
+.new {
+  font-weight: bold;
+}
 }
