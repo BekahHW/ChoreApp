@@ -5,12 +5,12 @@ class UsersController < ApplicationController
   end
 
   get '/users/new' do
+    @user = User.all
     erb :'/users/new'
   end
 
   post '/users/new' do
-    @user = User.new(:username => params[:username], :email => params[:username], :password => params[:password])
-
+    @user = User.new(:username => params[:username], :email => params[:email], :password => params[:password])
     if @user.save
       redirect '/users/login'
     else
