@@ -23,15 +23,15 @@ class UsersController < ApplicationController
 
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
-      redirect '/success'
+      redirect '/users/show'
     else
       redirect '/users/failure'
     end
   end
 
-  get '/success' do
+  get '/users/show' do
     if logged_in?
-      erb :success
+      erb :show
     else
       redirect '/users/login'
     end
