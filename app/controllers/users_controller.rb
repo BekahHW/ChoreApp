@@ -31,7 +31,8 @@ class UsersController < ApplicationController
 
   get '/users/show' do
     if logged_in?
-      erb :show
+      @user = User.all
+      erb :'/users/show'
     else
       redirect '/users/login'
     end
