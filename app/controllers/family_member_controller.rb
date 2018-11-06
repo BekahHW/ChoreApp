@@ -10,18 +10,18 @@ class FamilyMemberController < ApplicationController
   end
 
   get '/family_member/edit' do
-    @family_member = FamilyMember.find(params[:slug])
+    @family_member = FamilyMember.find_by(params[:slug])
     erb :'family_member/edit'
   end
 
-  patch '/family_member/:id' do
-    @family_member = FamilyMember.find(params[:slug])
+  patch '/family_member/:slug' do
+    @family_member = FamilyMember.find_by(params[:slug])
     erb :'/family_member/show'
   end
 
-  delete '/family_member/:id/delete' do
+  delete '/family_member/:slug/delete' do
     if logged_in?
-      @family_member = FamilyMember.find(params[:slug])
+      @family_member = FamilyMember.find_by(params[:slug])
       @family_member.destroy
       redirect '/family_member'
     else
