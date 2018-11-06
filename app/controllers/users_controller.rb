@@ -38,6 +38,11 @@ class UsersController < ApplicationController
     end
   end
 
+  get '/users/:slug' do
+    @user = User.find_by_slug(params[:slug])
+    erb :'/users/show'
+  end
+
   get '/users/failure' do
     erb :'/users/failure'
   end
@@ -46,5 +51,9 @@ class UsersController < ApplicationController
     session.clear
     redirect '/'
   end
+
+
+
+
 
 end
