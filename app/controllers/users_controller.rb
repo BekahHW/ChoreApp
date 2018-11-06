@@ -12,9 +12,9 @@ class UsersController < ApplicationController
   post '/users/new' do
     @user = User.new(:username => params[:username], :email => params[:email], :password => params[:password])
     if @user.save
-      redirect '/users/login'
+      redirect '/family_member/new'
     else
-      redirect '/users/failure'
+      redirect '/users/new'
     end
   end
 
