@@ -1,6 +1,12 @@
 <h2>Create Family Member</h2>
 <form action='/family_member/new' method='POST'>
-  <p>Name: <input type='text' name='name'></p>
+  <p>Name: <input type='text' name='family_member[name]'></p>
+
+  <h3>Assign existing chores</h3>
+  <%Chore.all.each do |c|%>
+   <input type="checkbox" name="family_member[chore_id]" id="<%=chore.id%>" ><%=c.type%></input>
+ <%end%>
+
 
   <h3>Or choose an existing family member:</h3>
   <%@family_member.all.each do |f|%>
@@ -8,4 +14,18 @@
   <%end%>
 <br/>
   <input type='submit' value='Submit' id ='submit'>
+</form>
+
+
+
+  <label>Choose an existing owner:</label>
+
+
+
+    <label>and/or, create a new owner:</label>
+    <br></br>
+    <label>name:</label>
+      <input  type="text" name="owner[name]" id='owner_name'></input>
+    <br></br>
+ <input type="submit" value="Create Pet">
 </form>
