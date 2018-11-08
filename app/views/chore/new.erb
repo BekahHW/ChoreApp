@@ -1,0 +1,17 @@
+<h1>Create a new chore</h1>
+
+<form action='/chore' method='POST'>
+  <p>Type: <input type='text' name='chore[type]' id="chore_type"></p>
+  <label>Choose an existing chore:</label>
+
+   <%Chore.all.each do |chore|%>
+    <input type="checkbox" name="family_member[chore_id]" id="<%=chore.id%>" value="<%=chore.id%>"><%=chore.type%></input>
+  <%end%>
+
+    <label>and/or, create a new chore:</label>
+    <br></br>
+    <label>Type:</label>
+      <input  type="text" name="chore[type]" id='chore_type'></input>
+    <br></br>
+ <input type="submit" value="Create Chore">
+</form>
