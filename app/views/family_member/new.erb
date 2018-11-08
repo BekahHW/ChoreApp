@@ -4,12 +4,12 @@
 
   <h3>Assign existing chores</h3>
   <%Chore.all.each do |c|%>
-   <input type="checkbox" name="family_member[chore_id]" id="<%=chore.id%>" ><%=c.type%></input>
+   <p><input type='checkbox' name='family_member_id[description]'>  <%=c.description%></input></p>
  <%end%>
 
   <h3>Or assign a new chore:</h3>
     <label>Type:</label>
-      <input  type="text" name="chore[type]" id='chore_type'></input>
+      <input  type='text' name='family_member_id[description]'></input>
     <br></br>
- <input type="submit" value="Create Family Member">
+ <input type='submit' value='Create Family Member'>
 </form>
