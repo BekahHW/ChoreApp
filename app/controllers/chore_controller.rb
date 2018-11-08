@@ -13,18 +13,21 @@ class ChoreController < ApplicationController
     #   @chore.family_member << Chore.create(:description => params['chore']['description'], :room =>['chore']['room'], :day =>['chore']['day'])
     # end
     @chore.save
-    binding.pry
     redirect "chore/#{@chore.id}"
   end
 
 
-  patch '/chore/:id' do
-
-    @chore = Chore.find_by_id(params[:id])
-    @chore.description = params[:description]
-    @chore.room = params[:room]
-    @chore.day = params[:day]
-    @chore.save
-    erb :'/chore/show'
+  get '/chore/:id' do
+    if logged_in?
+      @chore = Chore.find_by_id(params[:id])
+      @chore.description = params[:description]
+      @chore.room = params[:room]
+      @chore.day = params[:day]
+      @chore.save
+      erb :'/chore/show'
+    else
+      redirect '/chore'
+    end
   end
-end
+
+  end
