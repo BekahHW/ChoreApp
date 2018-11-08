@@ -9,12 +9,9 @@ class FamilyMemberController < ApplicationController
     if !params['chore']['type'].empty?
       @family_member.chore = Chore.create(:type => params['chore']['type'])
     end
-    @pet.save
-    redirect to "pets/#{@pet.id}"
+    @family_member.save
+    redirect to 'family_member/:slug'
   end
-
-
-
 
   get '/family_member/edit' do
     @family_member = FamilyMember.find_by_slug(params[:slug])
