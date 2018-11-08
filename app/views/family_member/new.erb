@@ -7,25 +7,9 @@
    <input type="checkbox" name="family_member[chore_id]" id="<%=chore.id%>" ><%=c.type%></input>
  <%end%>
 
-
-  <h3>Or choose an existing family member:</h3>
-  <%@family_member.all.each do |f|%>
-    <input type="checkbox" name="family_member[name][]"><%=f.name%></input>
-  <%end%>
-<br/>
-  <input type='submit' value='Submit' id ='submit'>
-</form>
-
-
-
-  <label>Choose an existing owner:</label>
-
-
-
-    <label>and/or, create a new owner:</label>
+  <h3>Or assign a new chore:</h3>
+    <label>Type:</label>
+      <input  type="text" name="chore[type]" id='chore_type'></input>
     <br></br>
-    <label>name:</label>
-      <input  type="text" name="owner[name]" id='owner_name'></input>
-    <br></br>
- <input type="submit" value="Create Pet">
+ <input type="submit" value="Create Family Member">
 </form>
