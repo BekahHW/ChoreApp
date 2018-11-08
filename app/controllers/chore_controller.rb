@@ -8,7 +8,7 @@ class ChoreController < ApplicationController
   post '/chore' do
     @chore = FamilyMember.create(params[:chore])
     if !params['family_member']['name'].empty?
-      @chore.family_member << Chore.create(name: params['chore']['type'])
+      @chore.family_member << Chore.create(name: params['chore']['description'])
     end
     @chore.save
     redirect "chore/#{@chore.id}"

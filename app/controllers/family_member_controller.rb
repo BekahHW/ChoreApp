@@ -6,8 +6,8 @@ class FamilyMemberController < ApplicationController
 
   post '/family_member/new' do
     @family_member = FamilyMember.create(:name => params[:name])
-    if !params['chore']['type'].empty?
-      @family_member.chore = Chore.create(:type => params['chore']['type'])
+    if !params['chore']['description'].empty?
+      @family_member.chore = Chore.create(:description => params['chore']['description'])
     end
     @family_member.save
     redirect to 'family_member/:slug'
@@ -15,7 +15,6 @@ class FamilyMemberController < ApplicationController
 
   get '/family_member/edit' do
     @family_member = FamilyMember.find_by_slug(params[:slug])
-    binding.pry
     erb :'family_member/edit'
   end
 
