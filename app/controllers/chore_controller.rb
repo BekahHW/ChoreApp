@@ -7,13 +7,19 @@ class ChoreController < ApplicationController
   end
 
   post '/chore' do
-    @chore = Chore.create(params[:chore])
+    if logged_in?
+      if params[:chore] == ""
+        redirect '/chore/new'
+      end
+      @chore = Chore.create(params[:chore])
+      @chore.family_member_id = current_user.id
 
-    # if !params['family_member']['name'].empty?
-    #   @chore.family_member << Chore.create(:description => params['chore']['description'], :room =>['chore']['room'], :day =>['chore']['day'])
-    # end
-    @chore.save
-    redirect "chore/#{@chore.id}"
+      # if !params['family_member']['name'].empty?
+      #   @chore.family_member << Chore.create(:description => params['chore']['description'], :room =>['chore']['room'], :day =>['chore']['day'])
+      # end
+      @chore.save
+      redirect "chore/#{@chore.id}"
+    end
   end
 
 
@@ -30,4 +36,4 @@ class ChoreController < ApplicationController
     end
   end
 
-  end
+end
