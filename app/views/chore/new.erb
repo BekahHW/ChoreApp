@@ -1,17 +1,27 @@
 <h1>Create a new chore</h1>
 
 <form action='/chore' method='POST'>
-  <p>Type: <input type='text' name='chore[description]' id="chore_description"></p>
-  <label>Choose an existing chore:</label>
+  <p>Description: <input type='text' name='chore[description]' id="chore_description"></input></p>
+  <p><label>Choose an existing chore:</label></p>
 
    <%Chore.all.each do |chore|%>
     <input type="checkbox" name="family_member[chore_id]" id="<%=chore.id%>" value="<%=chore.id%>"><%=chore.description%></input>
   <%end%>
 
-    <label>and/or, create a new chore:</label>
-    <br></br>
-    <label>Description:</label>
-      <input  type="text" name="chore[description]" id='chore_description'></input>
-    <br></br>
+  <p>Room: <input type='text' name='chore[room]' id="chore_room"></input></p>
+
+  <p><label>Choose an existing room:</label></p>
+
+   <%Chore.all.each do |chore|%>
+    <input type="checkbox" name="family_member[chore_id]" id="<%=chore.id%>" value="<%=chore.id%>"><%=chore.room%></input>
+  <%end%>
+
+  <p>Day: <input type='text' name='chore[room]' id="chore_day"></input></p>
+  <p><label>Choose an existing chore:</label></p>
+
+   <%Chore.all.each do |chore|%>
+    <input type="checkbox" name="family_member[chore_id]" id="<%=chore.id%>" value="<%=chore.id%>"><%=chore.day%></input>
+  <%end%>
+
  <input type="submit" value="Create Chore">
 </form>
