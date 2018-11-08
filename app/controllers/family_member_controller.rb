@@ -16,6 +16,8 @@ class FamilyMemberController < ApplicationController
 
   patch '/family_member/:slug' do
     @family_member = FamilyMember.find_by_slug(params[:slug])
+    @family_member.update(params[:family_member])
+    @family_member.save
     erb :'/family_member/show'
   end
 
@@ -28,4 +30,5 @@ class FamilyMemberController < ApplicationController
       erb :'users/login'
     end
   end
+
 end

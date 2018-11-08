@@ -3,7 +3,7 @@
   <p>Name: <input type='text' name='name'></p>
 
   <h3>Or choose an existing family member:</h3>
-  <%FamilyMember.all.each do |f|%>
+  <%@family_member.all.each do |f|%>
     <input type="checkbox" name="family_member[name][]"><%=f.name%></input>
   <%end%>
 <br/>
