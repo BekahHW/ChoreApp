@@ -4,6 +4,7 @@
 <%end%>
 
 <a href='/family_member/edit'>Edit</a>
+
 <form method='post' action='/family_member/<%=@family_member.slug%>/delete'>
   <input id='hidden' type='hidden' name='_method' value='DELETE'>
   <input type='submit' value='Delete Family Member'>
