@@ -11,6 +11,7 @@ class FamilyMemberController < ApplicationController
 
   get '/family_member/edit' do
     @family_member = FamilyMember.find_by_slug(params[:slug])
+    binding.pry
     erb :'family_member/edit'
   end
 

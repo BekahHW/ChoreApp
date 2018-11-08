@@ -4,6 +4,8 @@
   <h1>Edit Family Member:</h1>
     <form action='/family_member/:slug' method='POST'>
       <input id='hidden' type='hidden' name='_method' value='patch'>
+      
+
       <input type='text' id='name' name='name' value='<%=@family_member.name%>'>
       <input type='submit' value='Submit'>
     </form>
