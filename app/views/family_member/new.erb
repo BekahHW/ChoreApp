@@ -1,10 +1,10 @@
-<h1>Create Family Member or Choose from existing list</h1>
+<h2>Create Family Member</h2>
 <form action='/family_member/new' method='POST'>
   <p>Name: <input type='text' name='name'></p>
 
   <h3>Or choose an existing family member:</h3>
-  <%FamilyMember.all.each do |f|%>
-    <input type="checkbox" name="family_member[name][]"><%=@family_member.name%></input>
+  <%@family_member.all.each do |f|%>
+    <input type="checkbox" name="family_member[name][]"><%=f.name%></input>
   <%end%>
 
   <input type='submit' value='Submit' id ='submit'>
