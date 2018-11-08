@@ -23,20 +23,20 @@ class UsersController < ApplicationController
 
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
-      redirect '/users/show'
+      redirect '/family_member/new'
     else
       redirect '/users/failure'
     end
   end
 
-  get '/users/show' do
-    if logged_in?
-      @user = User.all
-      erb :'/users/show'
-    else
-      redirect '/users/login'
-    end
-  end
+  # get '/users/show' do
+  #   if logged_in?
+  #     @user = User.all
+  #     erb :'/users/show'
+  #   else
+  #     redirect '/users/login'
+  #   end
+  # end
 
   get '/users/:slug' do
     @user = User.find_by_slug(params[:slug])
