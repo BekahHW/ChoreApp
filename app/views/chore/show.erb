@@ -1,0 +1,12 @@
+<h1><%= @chore.description %></h1>
+<h2><%= @chore.room %></h2>
+<h2><%= @chore.day%></h2>
+
+<p><a href='/chores/<%=@chore.id %>/edit'>Edit</a></p>
+
+<p>
+  <form method='POST' action='/chores/<%= @chore.id %>/delete'>
+    <input id="hidden" type="hidden" name="_method" value="delete">
+    <input type="submit" value= "delete">
+  </form>
+</p>
