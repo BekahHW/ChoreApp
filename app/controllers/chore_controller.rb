@@ -8,7 +8,7 @@ class ChoreController < ApplicationController
 
   post '/chore' do
     binding.pry
-    @chore = FamilyMember.create(params[:chore])
+    @chore = Chore.create(params[:chore])
 
     if !params['family_member']['name'].empty?
       @chore.family_member << Chore.create(:description => params['chore']['description'], :room =>['chore']['room'], :day =>['chore']['day'])
