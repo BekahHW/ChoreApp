@@ -3,6 +3,8 @@
   <p>Name: <input type='text' name='family_member[name]'></p>
 
   <h3>Assign existing chores</h3>
+<%  binding.pry%>
+
   <%@family_member.chore.all.each do |c|%>
    <p><input type='checkbox' name='family_member_id[description]'>  <%=c.description%></input></p>
  <%end%>

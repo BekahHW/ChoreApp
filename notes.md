@@ -1,0 +1,5 @@
+-login user
+-create a family Member (family_member/new)
+-assign chores to a family member (chores/new)
+    -chores belong to family_member
+-show chores (chores/show)
