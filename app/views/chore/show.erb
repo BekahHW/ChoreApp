@@ -1,6 +1,8 @@
-<h1><%= @chore.description %></h1>
-<h2><%= @chore.room %></h2>
+<h1> These are the chores for <%@chore.family_member_id%></h1>
+
 <h2><%= @chore.day%></h2>
+<h2><%= @chore.description %></h2>
+<h2><%= @chore.room %></h2>
 
 <p><a href='/chores/<%=@chore.id %>/edit'>Edit</a></p>
 
