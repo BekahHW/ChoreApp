@@ -2,16 +2,8 @@
 <form action='/family_member/new' method='POST'>
   <p>Name: <input type='text' name='family_member[name]'></p>
 
-  <h3>Assign existing chores</h3>
-<%  binding.pry%>
-
-  <%@family_member.chore.all.each do |c|%>
-   <p><input type='checkbox' name='family_member_id[description]'>  <%=c.description%></input></p>
- <%end%>
-
-  <h3>Or assign a new chore:</h3>
-    <label>Type:</label>
-      <input  type='text' name='family_member_id[description]'></input>
-    <br></br>
- <input type='submit' value='Create Family Member'>
+  <h2>Choose existing family member</h2>
+  <%FamilyMember.all.each do |f|%>
+  <p><input type='checkbox' name='name'>  <%=f.name%></input></p>
+  <%end%>
 </form>
