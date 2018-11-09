@@ -10,11 +10,12 @@ class UsersController < ApplicationController
   end
 
   post '/users/new' do
-    @user = User.new(:username => params[:username], :email => params[:email], :password => params[:password])
-    if @user.save
-      redirect '/family_member/new'
+    if params[:username] == "" || params[:password] == ""
+      redirect to '/users/new'
     else
-      redirect '/users/new'
+      @user = User.create(:username => params[:username], :email => params[:email], :password => params[:password])
+      session[:user_id] = @user.id
+      redirect '/family_member/new'
     end
   end
 
