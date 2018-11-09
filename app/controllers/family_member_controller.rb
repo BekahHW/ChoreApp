@@ -11,8 +11,8 @@ class FamilyMemberController < ApplicationController
 
     # @family_member.chore = Chore.create(params['chore'])
     # end
-    # @family_member.save
-    redirect to 'family_member/:slug'
+    @family_member.save
+    redirect to "family_member/#{@family_member.slug}"
   end
 
   get '/family_member/edit' do
