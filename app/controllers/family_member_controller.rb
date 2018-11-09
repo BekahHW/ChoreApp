@@ -15,6 +15,11 @@ class FamilyMemberController < ApplicationController
     redirect to "family_member/#{@family_member.slug}"
   end
 
+  get 'family_member/slug' do
+    @family_member = FamilyMember.find_by_slug(params[:slug])
+    erb :'/family_member/show'
+  end
+
   get '/family_member/edit' do
     @family_member = FamilyMember.find_by_slug(params[:slug])
     erb :'family_member/edit'
