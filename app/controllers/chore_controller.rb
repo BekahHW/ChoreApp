@@ -12,11 +12,11 @@ class ChoreController < ApplicationController
         redirect '/chore/new'
       end
       @chore = Chore.create(params[:chore])
-      @chore.family_member_id = current_user.id
+      # @chore.family_member_id = current_user.id
 
-      # if !params['family_member']['name'].empty?
-      #   @chore.family_member << Chore.create(:description => params['chore']['description'], :room =>['chore']['room'], :day =>['chore']['day'])
-      # end
+      if !params['family_member']['name'].empty?
+        @chore.family_member << Chore.create(:description => params['chore']['description'], :room =>['chore']['room'], :day =>['chore']['day'])
+      end
       @chore.save
       redirect "chore/#{@chore.id}"
     end
