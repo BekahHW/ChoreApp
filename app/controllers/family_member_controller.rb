@@ -10,7 +10,7 @@ class FamilyMemberController < ApplicationController
     erb :'/family_member/show'
   end
 
-  get '/family_member/edit' do
+  get '/family_member/:slug/edit' do
     @family_member = FamilyMember.find_by_slug(params[:slug])
     erb :'family_member/edit'
   end
@@ -35,11 +35,14 @@ class FamilyMemberController < ApplicationController
   delete '/family_member/:slug' do
     if logged_in?
       @family_member = FamilyMember.find_by_slug(params[:slug])
+      # @family_member = current_user.FamilyMember.find_by_slug(params[:slug])
       @family_member.destroy
       erb :'/family_member/show'
     else
       erb :'users/login'
     end
   end
+
+
 
 end
