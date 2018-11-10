@@ -26,7 +26,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect '/family_member/new'
     else
-      redirect '/users/failure'
+      erb :'/users/failure'
     end
   end
 
