@@ -18,6 +18,11 @@
 
   <p>Day: <input type='text' name='chore[day]' id="chore_day"></input></p>
 
-
+  <label> Which Family Member does this belong to? </label>
+   <select name="family_member_id">
+     <% current_user.family_member.each do |f| %>
+       <option value=<%=family_member.id %>><%= f.name %></option>
+     <% end %>
+   </select>
  <input type="submit" value="Create Chore">
 </form>
