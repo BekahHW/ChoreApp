@@ -12,10 +12,10 @@ class FamilyMemberController < ApplicationController
     # @family_member.chore = Chore.create(params['chore'])
     # end
     @family_member.save
-    redirect to "family_member/#{@family_member.slug}"
+    redirect("/family_member/#{@family_member.slug}")
   end
 
-  get 'family_member/:slug' do
+  get '/family_member/:slug' do
     @family_member = FamilyMember.find_by_slug(params[:slug])
     erb :'/family_member/show'
   end
