@@ -1,12 +1,20 @@
 class UsersController < ApplicationController
 
   get '/users/login' do
-    erb :'/users/login'
+    if !session[:user_id]
+      erb :'/users/login'
+    else
+      redirect '/family_member'
+    end
   end
 
   get '/users/new' do
-    @user = User.all
-    erb :'/users/new'
+    if !session[:user_id]
+      @user = User.all
+      erb :'/users/new'
+    else
+      redirect to '/chores'
+    end
   end
 
   post '/users/new' do
