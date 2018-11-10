@@ -1,7 +1,8 @@
 require 'pry'
 class FamilyMemberController < ApplicationController
   get '/family_member' do
-    # erb :'/family_member/new'
+    @family_member = FamilyMember.all
+    erb :'/family_member/new'
   end
 
   get '/family_member/new' do
