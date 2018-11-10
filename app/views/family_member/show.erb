@@ -3,10 +3,10 @@
 <!-- f.chore -->
 <%end%>
 
-<form action ="/family_member/:slug/edit">
+<!-- <form action ="/family_member/:slug/edit">
     <input type="submit" value="edit" />
-</form>
-<!-- <div><a href='/family_member/slug/edit' class="button"> Edit </a> -->
+</form> -->
+<div><button><a href='/family_member/slug/edit' class="button"> Edit </a></button>
 
 <form method='post' action="/family_member/<%=@family_member.slug%>">
   <input id='hidden' type='hidden' name='_method' value='DELETE'>
