@@ -1,6 +1,10 @@
 require 'pry'
 class FamilyMemberController < ApplicationController
   get '/family_member' do
+    # erb :'/family_member/new'
+  end
+
+  get '/family_member/new' do
     @family_member = FamilyMember.all
     erb :'/family_member/new'
   end
@@ -23,11 +27,11 @@ class FamilyMemberController < ApplicationController
   end
 
   post '/family_member' do
-    @family_member = FamilyMember.create(params[:family_member])
-    if !params['chore']['description'].empty? || !params['chore']['room'].empty? || !params['chore']['day'].empty?
-      @family_member.chore << Chore.create(params['chore'])
-    end
-    @family_member.save
+    @family_member = FamilyMember.create(name: params[:name])
+    # if !params['chore']['description'].empty? || !params['chore']['room'].empty? || !params['chore']['day'].empty?
+    #   @family_member.chore << Chore.create(params['chore'])
+    # end
+    # @family_member.save
     redirect("/family_member/#{@family_member.slug}")
   end
 
