@@ -3,11 +3,17 @@
 <!-- f.chore -->
 <%end%>
 
-<a href='/family_member/edit'>Edit</a>
+<form  method = 'POST' action="/family_member/:slug/edit">
+    <input type="submit" value="edit" />
+</form>
+<!-- <div><a href='/family_member/edit' class="button"> Edit </a> -->
 
 <form method='post' action="/family_member/<%=@family_member.slug%>">
   <input id='hidden' type='hidden' name='_method' value='DELETE'>
   <input type='submit' value='Delete Family Member'>
 </form>
 
-<a href='/chore/new'>Assign Chores</a>
+<form  method = 'POST' action='/chore/new'>
+    <input type="submit" value="Assign Chore" />
+</form>
+<!-- <a href='/chore/new' class="button"> Assign Chores </a></button> -->
