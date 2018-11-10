@@ -1,11 +1,11 @@
 <%FamilyMember.all.each do |f|%>
-<%= f.name %>
+<h1><%= f.name %><h1>
 <!-- f.chore -->
 <%end%>
 
 <a href='/family_member/edit'>Edit</a>
 
-<form method='post' action='/family_member/<%=@family_member.slug%>/delete'>
+<form method='post' action="/family_member/<%=@family_member.slug%>">
   <input id='hidden' type='hidden' name='_method' value='DELETE'>
   <input type='submit' value='Delete Family Member'>
 </form>
