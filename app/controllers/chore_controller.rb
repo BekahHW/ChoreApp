@@ -22,14 +22,20 @@ class ChoreController < ApplicationController
     end
   end
 
+  get '/chore/:id/edit' do
+    if logged_in?
+      @chore = Chore.find_by_id(params[:id])
+      erb :'chore/edit'
+    end
+  end
 
   get '/chore/:id' do
     if logged_in?
       @chore = Chore.find_by_id(params[:id])
-      @chore.description = params[:description]
-      @chore.room = params[:room]
-      @chore.day = params[:day]
-      @chore.save
+      # @chore.description = params[:description]
+      # @chore.room = params[:room]
+      # @chore.day = params[:day]
+      # @chore.save
       erb :'/chore/show'
     else
       redirect '/chore'
