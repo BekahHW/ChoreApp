@@ -6,7 +6,7 @@ class FamilyMemberController < ApplicationController
   end
 
   post '/family_member/new' do
-    @family_member = FamilyMember.create(:name => params[:name])
+    @family_member = FamilyMember.find_or_create_by(:name => params[:name])
     # if !params['chore']['description'].empty?
 
     # @family_member.chore = Chore.create(params['chore'])
