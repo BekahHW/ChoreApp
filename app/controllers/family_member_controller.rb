@@ -1,8 +1,18 @@
 require 'pry'
 class FamilyMemberController < ApplicationController
-  get '/family_member/new' do
+  get '/family_member' do
     @family_member = FamilyMember.all
     erb :'/family_member/new'
+  end
+
+  post '/family_member' do
+    @family_member = FamilyMember.create(params[:family_member])
+    # if !params['chore']['description'].empty?
+
+    # @family_member.chore = Chore.create(params['chore'])
+    # end
+    # @family_member.save
+    redirect("/family_member/#{@family_member.slug}")
   end
 
   get '/family_member/:slug' do
@@ -13,16 +23,6 @@ class FamilyMemberController < ApplicationController
   get '/family_member/:slug/edit' do
     @family_member = FamilyMember.find_by_slug(params[:slug])
     erb :'family_member/edit'
-  end
-
-  post '/family_member/new' do
-    @family_member = FamilyMember.find_or_create_by(:name => params[:name])
-    # if !params['chore']['description'].empty?
-
-    # @family_member.chore = Chore.create(params['chore'])
-    # end
-    @family_member.save
-    redirect("/family_member/#{@family_member.slug}")
   end
 
   patch '/family_member/:slug' do
@@ -37,7 +37,7 @@ class FamilyMemberController < ApplicationController
       @family_member = FamilyMember.find_by_slug(params[:slug])
       # @family_member = current_user.FamilyMember.find_by_slug(params[:slug])
       @family_member.destroy
-      erb :'/family_member/show'
+      redirect to '/family_member/new'
     else
       erb :'users/login'
     end
