@@ -42,4 +42,15 @@ class ChoreController < ApplicationController
     end
   end
 
+  post '/chore/:id' do
+    @chore = Chore.find_by_id(params[:id])
+    @chore.update(params['chore'])
+    if !params['family_member']['name'].empty?
+      @chore.family_member << FamilyMember.create(name: params['family_member']['name'])
+    end
+    @chore.save
+    redirect "chore/#{@chore.id}"
+  end
+
+
 end
