@@ -2,27 +2,29 @@
 
 <form action='/chore' method='POST'>
   <p>Description: <input type='text' name='chore[description]' id="chore_description"></input></p>
-  <p><label>Choose an existing chore:</label></p>
+  <!-- <p><label>Choose an existing chore:</label></p>
 
    <%Chore.all.each do |chore|%>
-  <p>  <input type="checkbox" name="family_member[chore_ids]" id="<%=chore.id%>" value="<%=chore.id%>"> <%=chore.description%></input></p>
-  <%end%>
+  <p>  <input type="checkbox" name="family_member[chore_ids]" id="<%=chore.description%>" value="<%=chore.description%>"> <%=chore.description%></input></p>
+  <%end%> -->
 
   <p>Room: <input type='text' name='chore[room]' id="chore_room"></input></p>
 
-  <p><label>Choose an existing room:</label></p>
+  <!-- <p><label>Choose an existing room:</label></p>
 
    <%Chore.all.each do |chore|%>
-    <p><input type="checkbox" name="family_member[chore_ids]" id="<%=chore.id%>" value="<%=chore.id%>"><%=chore.room%></input></p>
-  <%end%>
+    <p><input type="checkbox" name="family_member[chore_ids]" id="<%=chore.room%>" value="<%=chore.room%>"><%=chore.room%></input></p>
+  <%end%> -->
 
   <p>Day: <input type='text' name='chore[day]' id="chore_day"></input></p>
 
-  <!-- <label> Which Family Member does this belong to? </label>
-   <select name="family_member_id">
-     <% @current_user.family_member.each do |f| %>
-       <option value=<%=family_member.id %>><%= f.name %></option>
-     <% end %>
-   </select> -->
+
+  <p> Who does this chore belong to? </p>
+  <% FamilyMember.all.each do |f| %>
+
+  <input type="checkbox" name="chore[family_member_id]" id="<%= f.id%>" value="<%= f.id%>"><%= f.name%></input>
+  <% end %>
+</select>
+
  <input type="submit" value="Create Chore">
 </form>
