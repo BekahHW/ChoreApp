@@ -1,11 +1,10 @@
-<%binding.pry%>
 <h1><%= @family_member.name%></h1>
 <!-- f.chore -->
 
 <!-- <form action ="/family_member/:slug/edit">
     <input type="submit" value="edit" />
 </form> -->
-<div><button><a href='/family_member/:id/edit' class="button"> Edit </a></button>
+<div><button><a href='/family_member/<%=@family_member.id%>/edit' class="button"> Edit </a></button>
 
 <form method='post' action="/family_member/<%=@family_member.id%>">
   <input id='hidden' type='hidden' name='_method' value='DELETE'>

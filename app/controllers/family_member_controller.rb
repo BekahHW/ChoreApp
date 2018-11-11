@@ -11,18 +11,20 @@ class FamilyMemberController < ApplicationController
   end
 
   get '/family_member/:id/edit' do
+
     @family_member = FamilyMember.find(params[:id])
     erb :'family_member/edit'
   end
 
   post '/family_member/:id' do
     @family_member = FamilyMember.find(params[:id])
+
     @family_member.update(params.select {|f| f == 'name'})
     redirect "/family_member/#{@family_member.id}"
   end
 
   patch '/family_member/:id' do
-    @family_member = FamilyMember.find_by_id(params[:id])
+    @family_member = FamilyMember.find(params[:id])
     # @family_member.update(params[:family_member])
     @family_member.save
     redirect "/family_member/#{@family_member.id}"
