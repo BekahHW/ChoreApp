@@ -22,9 +22,9 @@
   <p> Who does this chore belong to? </p>
   <% FamilyMember.all.each do |f| %>
 
-  <input type="checkbox" name="chore[family_member_id]" id="<%= f.id%>" value="<%= f.id%>"><%= f.name%></input>
+  <p><input type="checkbox" name="chore[family_member_id]" id="<%= f.id%>" value="<%= f.id%>"> <%= f.name%> </input></p>
   <% end %>
 </select>
 
- <input type="submit" value="Create Chore">
+ <p><input type="submit" value="Create Chore"></p>
 </form>
