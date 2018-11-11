@@ -19,7 +19,7 @@ class FamilyMemberController < ApplicationController
   post '/family_member/:id' do
     @family_member = FamilyMember.find(params[:id])
 
-    @family_member.update(params.select {|f| f == 'name'})
+    # @family_member.update(params.select {|f| f == 'name'})
     redirect "/family_member/#{@family_member.id}"
   end
 
