@@ -60,7 +60,7 @@ class ChoreController < ApplicationController
 
   delete '/chore/:id' do
     if logged_in?
-      @chore= FamilyMember.find(params[:id])
+      @chore= Chore.find(params[:id])
       # @family_member = current_user.FamilyMember.find_by_slug(params[:slug])
       @chore.destroy
       redirect to '/chore/new'
