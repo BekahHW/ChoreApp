@@ -1,7 +1,8 @@
 <h1>Edit chore</h1>
 
-<form action='/chore/<%= @chore.id %>/edit' method='POST'>
+<form action='/chore/<%= @chore.id %>' method='POST'>
     <input id='hidden' type='hidden' name='_method' value='patch'>
+    
   <p>Description: <input type='text' name='chore[description]' id="chore_description"></input></p>
 
   <p>Room: <input type='text' name='chore[room]' id="chore_room"></input></p>
