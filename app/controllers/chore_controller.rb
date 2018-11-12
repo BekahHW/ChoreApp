@@ -1,5 +1,8 @@
 require 'pry'
+require 'rack-flash'
+
 class ChoreController < ApplicationController
+  use Rack::Flash
   get '/chore' do
     @chore = Chore.all
     erb :'chore/index'
@@ -54,7 +57,10 @@ class ChoreController < ApplicationController
       @chore = Chore.create(params[:chore])
       # @chore.family_member_id = current_user.id
 
-      # if !params['family_member']['name'].empty?
+      if !params['family_member']['name'].empty?
+        flash[:message] = "You must choose a family member."
+        redirect '/chore/new'
+      end
       # @chore.family_member << Chore.create(:description => params['chore']['description'], :room => params['chore']['room'], :day => params['chore']['day'])
       # # end
       # @chore.save

@@ -12,18 +12,10 @@
 
 
   <p><label>Who does this chore belong to? </label></p>
-
   <% current_user.family_members.each do |f| %>
 
   <p><input type="checkbox" name="chore[family_member_id]" id="<%= f.id%>" value="<%= f.id%>"> <%= f.name%> </input></p>
   <% end %>
-</select>
 
  <p><input type="submit" value="Create Chore"></p>
 </form>
-
-
-<select name="golf_bag_id">
-  <% current_user.golf_bags.each do |bag| %>
-  <% end %>
-</select>
