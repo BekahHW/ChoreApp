@@ -1,0 +1,20 @@
+<h1>Edit chore</h1>
+
+<form action='/chore/<%= @chore.id %>/edit' method='POST'>
+    <input id='hidden' type='hidden' name='_method' value='patch'>
+  <p>Description: <input type='text' name='chore[description]' id="chore_description"></input></p>
+
+  <p>Room: <input type='text' name='chore[room]' id="chore_room"></input></p>
+
+  <p>Day: <input type='text' name='chore[day]' id="chore_day"></input></p>
+
+
+  <p> Who does this chore belong to? </p>
+  <% FamilyMember.all.each do |f| %>
+
+  <p><input type="checkbox" name="chore[family_member_id]" id="<%= f.id%>" value="<%= f.id%>"> <%= f.name%> </input></p>
+  <% end %>
+</select>
+
+ <p><input type="submit" value="Edit Chore"></p>
+</form>
