@@ -1,9 +1,5 @@
 <h1><%= @family_member.name%></h1>
-<!-- f.chore -->
 
-<!-- <form action ="/family_member/:slug/edit">
-    <input type="submit" value="edit" />
-</form> -->
 <div><button><a href='/family_member/<%=@family_member.id%>/edit' class="button"> Edit </a></button>
 
 <form method='POST' action="/family_member/<%=@family_member.id%>">
