@@ -29,6 +29,13 @@ class ChoreController < ApplicationController
     redirect "chore/#{@chore.id}"
   end
 
+  patch '/chore/:id' do
+    @chore = Chore.find(params[:id])
+    # @family_member.update(params[:family_member])
+    @chore.save
+    redirect "chore/#{@chore.id}"
+  end
+
   get '/chore/:id' do
     if logged_in?
       @chore = Chore.find_by_id(params[:id])
