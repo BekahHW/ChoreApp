@@ -38,14 +38,14 @@ class UsersController < ApplicationController
     end
   end
 
-  # get '/users/show' do
-  #   if logged_in?
-  #     @user = User.all
-  #     erb :'/users/show'
-  #   else
-  #     redirect '/users/login'
-  #   end
-  # end
+  get '/users/index' do
+    if logged_in?
+      @user = User.all
+      erb :'/users/index'
+    else
+      redirect '/users/login'
+    end
+  end
 
 
   get '/users/:id' do

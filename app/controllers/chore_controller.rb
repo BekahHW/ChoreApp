@@ -79,4 +79,5 @@ class ChoreController < ApplicationController
     end
   end
 
+
 end
