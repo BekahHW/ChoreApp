@@ -11,11 +11,13 @@
     <input type='text' name='chore[day]' id="chore_day"></input></p>
 
 
-  <p><label>Who does this chore belong to? </label></p>
-  <% current_user.family_members.each do |f| %>
+  <p><label>Who does this chore belong to? Choose one.</label> </p>
+  <% FamilyMember.all.each do |f| %>
 
   <p><input type="checkbox" name="chore[family_member_id]" id="<%= f.id%>" value="<%= f.id%>"> <%= f.name%> </input></p>
   <% end %>
+  </select>
+
 
  <p><input type="submit" value="Create Chore"></p>
 </form>

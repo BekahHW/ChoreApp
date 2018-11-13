@@ -10,6 +10,7 @@ class ChoreController < ApplicationController
 
   get '/chore/new' do
     @chore = Chore.all
+    @family_member = FamilyMember.all
     erb :'/chore/new'
   end
 
@@ -55,12 +56,11 @@ class ChoreController < ApplicationController
         redirect '/chore/new'
       end
       @chore = Chore.create(params[:chore])
+      @family_member = FamilyMember.all
       # @chore.family_member_id = current_user.id
-
-      if !params['family_member']['name'].empty?
-        flash[:message] = "You must choose a family member."
-        redirect '/chore/new'
-      end
+      # if !params['family_member']['name'].empty?
+      #   flash[:message] = "You must choose a family member."
+      # end
       # @chore.family_member << Chore.create(:description => params['chore']['description'], :room => params['chore']['room'], :day => params['chore']['day'])
       # # end
       # @chore.save
