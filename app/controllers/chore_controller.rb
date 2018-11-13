@@ -1,6 +1,5 @@
 require 'pry'
 class ChoreController < ApplicationController
-  use Rack::Flash
   get '/chore' do
     @chore = Chore.all
     erb :'chore/index'
