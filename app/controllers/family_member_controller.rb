@@ -6,8 +6,12 @@ class FamilyMemberController < ApplicationController
   end
 
   get '/family_member/new' do
-    @family_member = FamilyMember.all
-    erb :'/family_member/new'
+    if logged_in?
+      @family_member = FamilyMember.all
+      erb :'/family_member/new'
+    else
+      redirect to '/'
+    end
   end
 
   get '/family_member/:id/edit' do

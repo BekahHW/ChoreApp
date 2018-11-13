@@ -9,9 +9,13 @@ class ChoreController < ApplicationController
   end
 
   get '/chore/new' do
-    @chore = Chore.all
-    @family_member = FamilyMember.all
-    erb :'/chore/new'
+    if logged_in?
+      @chore = Chore.all
+      @family_member = FamilyMember.all
+      erb :'/chore/new'
+    else
+      redirect to '/'
+    end
   end
 
   get '/chore/:id/edit' do
