@@ -19,6 +19,17 @@
     line-height: 18px;
   }
 
+  /* Nav */
+  .top {
+      color: black;
+      display: flex;
+      justify-content: space-around;
+      font-family: 'Gudea', sans-serif;
+      font-weight: bold;
+      background-color: floralwhite;
+      font-size: 1.5em;
+  }
+
   .wrapper {
     background: #fff;
     -moz-box-shadow: 0 0 10px rgba(0,0,0,.3);
@@ -117,4 +128,7 @@
 .new {
   font-weight: bold;
 }
+
+
+
 }

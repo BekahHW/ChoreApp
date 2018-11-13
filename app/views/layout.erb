@@ -15,6 +15,20 @@
     <link rel="stylesheet" href="/stylesheets/main.css" />
   </head>
   <body>
+    <nav class='top'>
+     <% if logged_in? %>
+
+       <a href='/family_member/new'> Create Family Member </a>
+       <a href='/chore/new'> Create Chore</a>
+
+       <a href='/logout'> Log Out </a>
+
+     <% else %>
+       <a href='/users/new'>Sign Up</a>
+       <a href='users/login'> Sign In </a>
+     <%end %>
+
+   </nav>
     <div class="wrapper">
 
         <%= yield %>
