@@ -1,6 +1,11 @@
-<h1>Welcome! </h1>
+<h1>Members and chores </h1>
 
-  <h2>Create a family member here</h2>
-  <!-- #form that includes names -->
+  <%FamilyMember.all.each do |f| %>
 
-  <h2>Or choose from an existing family member here</h2>
+  <%=f.name%>
+  <%binding.pry%>
+  <%=f.chores%>
+  <%end%>
+
+
+  <p><a href="/logout">Log Out</a></p>
