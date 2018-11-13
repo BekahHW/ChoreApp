@@ -1,6 +1,4 @@
 require 'pry'
-require 'rack-flash'
-
 class ChoreController < ApplicationController
   use Rack::Flash
   get '/chore' do
@@ -10,8 +8,8 @@ class ChoreController < ApplicationController
 
   get '/chore/new' do
     if logged_in?
-      @chore = Chore.all
-      @family_member = FamilyMember.all
+      # @chore = Chore.all
+      # @family_member = FamilyMember.all
       erb :'/chore/new'
     else
       redirect to '/'
@@ -27,27 +25,19 @@ class ChoreController < ApplicationController
 
   post '/chore/:id' do
     @chore = Chore.find(params[:id])
-    @chore.update(params['chore'])
-    # if !params['family_member']['name'].empty?
-    #   @chore.family_member << FamilyMember.create(name: params['family_member']['name'])
-    # end
-    @chore.save
+    # @chore.update(params['chore'])
+    # @chore.save
     redirect "chore/#{@chore.id}"
   end
 
   patch '/chore/:id' do
     @chore = Chore.find(params[:id])
-    # @family_member.update(params[:family_member])
     redirect "chore/#{@chore.id}"
   end
 
   get '/chore/:id' do
     if logged_in?
-      @chore = Chore.find_by_id(params[:id])
-      # @chore.description = params[:description]
-      # @chore.room = params[:room]
-      # @chore.day = params[:day]
-      # @chore.save
+      @chore = Chore.find(params[:id])
       erb :'/chore/show'
     else
       redirect '/chore'
@@ -61,13 +51,6 @@ class ChoreController < ApplicationController
       end
       @chore = Chore.find_or_create_by(params[:chore])
       @family_member = FamilyMember.all
-      # @chore.family_member_id = current_user.id
-      # if !params['family_member']['name'].empty?
-      #   flash[:message] = "You must choose a family member."
-      # end
-      # @chore.family_member << Chore.create(:description => params['chore']['description'], :room => params['chore']['room'], :day => params['chore']['day'])
-      # # end
-      # @chore.save
       redirect "chore/#{@chore.id}"
     end
   end
@@ -75,7 +58,6 @@ class ChoreController < ApplicationController
   delete '/chore/:id' do
     if logged_in?
       @chore= Chore.find(params[:id])
-      # @family_member = current_user.FamilyMember.find_by_slug(params[:slug])
       @chore.destroy
       redirect to '/chore/new'
     else
