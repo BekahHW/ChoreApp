@@ -7,7 +7,7 @@ class FamilyMemberController < ApplicationController
 
   get '/family_member/new' do
     if logged_in?
-      @family_member = FamilyMember.all
+      # @family_member = FamilyMember.all
       erb :'/family_member/new'
     else
       redirect to '/'
@@ -15,15 +15,12 @@ class FamilyMemberController < ApplicationController
   end
 
   get '/family_member/:id/edit' do
-
     @family_member = FamilyMember.find(params[:id])
     erb :'family_member/edit'
   end
 
   post '/family_member/:id' do
     @family_member = FamilyMember.find(params[:id])
-
-    # @family_member.update(params.select {|f| f == 'name'})
     redirect "/family_member/#{@family_member.id}"
   end
 
@@ -41,10 +38,6 @@ class FamilyMemberController < ApplicationController
 
   post '/family_member' do
     @family_member = FamilyMember.find_or_create_by(name: params[:name])
-    # if !params['chore']['description'].empty? || !params['chore']['room'].empty? || !params['chore']['day'].empty?
-    #   @family_member.chore << Chore.create(params['chore'])
-    # end
-    # @family_member.save
     redirect("/family_member/#{@family_member.id}")
   end
 
