@@ -55,7 +55,7 @@ class ChoreController < ApplicationController
       if params[:chore] == ""
         redirect '/chore/new'
       end
-      @chore = Chore.create(params[:chore])
+      @chore = Chore.find_or_create_by(params[:chore])
       @family_member = FamilyMember.all
       # @chore.family_member_id = current_user.id
       # if !params['family_member']['name'].empty?
