@@ -10,7 +10,6 @@ class UsersController < ApplicationController
 
   get '/users/new' do
     if !session[:user_id]
-      @user = User.all
       erb :'/users/new'
     else
       redirect to '/chores'
@@ -19,7 +18,7 @@ class UsersController < ApplicationController
 
   post '/users/new' do
     if params[:username] == "" || params[:password] == ""
-      redirect to '/users/signup'
+      redirect to '/users/new'
     else
       @user = User.create(:username => params[:username], :email => params[:email], :password => params[:password])
       session[:user_id] = @user.id
@@ -28,7 +27,7 @@ class UsersController < ApplicationController
   end
 
   post '/users/login' do
-    @user = User.find_by(:username => params[:username])
+    @user = User.find_by(params[:username])
 
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
@@ -66,9 +65,5 @@ class UsersController < ApplicationController
       erb :'/users/login'
     end
   end
-
-
-
-
 
 end
