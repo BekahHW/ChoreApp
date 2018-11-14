@@ -23,12 +23,12 @@ class ApplicationController < Sinatra::Base
       User.find(session[:user_id])
     end
 
-    # def login(user_id)
+    # def login(user_id, password)
     #   session[:user_id] = user.id
     # end
     #
     # def logout!
-    #   session.clear
+    #   s ession.clear
     # end
 
     #    def self.current_user(session)
