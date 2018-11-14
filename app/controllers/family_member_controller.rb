@@ -21,14 +21,15 @@ class FamilyMemberController < ApplicationController
   end
 
   post '/family_member/:id' do
+    # restful version of post creates wihtout id
+    # post fmaily_members
     @family_member = FamilyMember.find(params[:id])
     redirect "/family_member/#{@family_member.id}"
   end
 
   patch '/family_member/:id' do
     @family_member = FamilyMember.find(params[:id])
-    # @family_member.update(params[:family_member])
-    @family_member.save
+    @family_member.update(params[:family_member])
     redirect "/family_member/#{@family_member.id}"
   end
 
@@ -38,7 +39,8 @@ class FamilyMemberController < ApplicationController
   end
 
   post '/family_member' do
-    @family_member = FamilyMember.create(params)
+    @family_member = current_user.family_members.build(params)
+    @family_member.save
     redirect("/family_member/#{@family_member.id}")
   end
 
