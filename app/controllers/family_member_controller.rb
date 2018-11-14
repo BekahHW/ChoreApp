@@ -15,9 +15,8 @@ class FamilyMemberController < ApplicationController
   end
 
   get '/family_member/:id/edit' do
-    binding.pry
-    # @family_member = FamilyMember.find(params[:id])
-    @family_member = current_user.family_members.find(params[:id])
+    @family_member = FamilyMember.find(params[:id])
+    # @family_member = current_user.family_members.find(params[:id])
     erb :'family_member/edit'
   end
 
