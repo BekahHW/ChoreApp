@@ -20,8 +20,9 @@ class UsersController < ApplicationController
     if params[:username] == "" || params[:password] == ""
       redirect to '/users/new'
     else
-      @user = User.create(:username => params[:username], :email => params[:email], :password => params[:password])
+      @user = User.new(:username => params[:username], :email => params[:email], :password => params[:password])
       session[:user_id] = @user.id
+      @user.save
       redirect '/family_member/new'
     end
   end
