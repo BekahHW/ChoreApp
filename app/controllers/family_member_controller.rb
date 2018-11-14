@@ -38,7 +38,7 @@ class FamilyMemberController < ApplicationController
   end
 
   post '/family_member' do
-    @family_member = FamilyMember.find_or_create_by(name: params[:name])
+    @family_member = FamilyMember.create(params)
     redirect("/family_member/#{@family_member.id}")
   end
 

@@ -12,9 +12,9 @@
 
 
   <p><label>Who does this chore belong to? Check one</label> </p>
-  <%binding.pry%>
-  <% @current_user.family_members.each do |f| %>
-  <p><input type="checkbox" name="chore[family_member_id]" id="<%= f.id%>" value="<%= f.id%>"> <%= f.name%> </input></p>
+  <!-- <%binding.pry%> -->
+  <% current_user.family_members.each do |f| %>
+  <p><input type="checkbox" name="user[family_member_ids][]" id="<%= f.id%>" value="<%= f.id%>"> <%= f.name%> </input></p>
   <% end %>
   </select>
 
