@@ -12,10 +12,10 @@
 
 
   <p><label>Who does this chore belong to?</label> </p>
-  <!-- <%#binding.pry%> -->
 
   <select name="family_member_id">
-    <% current_user.family_members.each do |f| %>
+    <%  FamilyMember.each do |f| %>
+    <!-- current_user.family_members.each -->
     <option name="chore[family_member_id]" id="<%= f.id%>" value="<%= f.id%>">><%= f.name %></option>
 
   <% end %>
