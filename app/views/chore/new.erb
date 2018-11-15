@@ -14,10 +14,9 @@
   <p><label>Who does this chore belong to?</label> </p>
 
   <select name="family_member_id">
-    <%  FamilyMember.each do |f| %>
+    <%  FamilyMember.all.each do |f| %>
     <!-- current_user.family_members.each -->
-    <option name="chore[family_member_id]" id="<%= f.id%>" value="<%= f.id%>">><%= f.name %></option>
-
+    <option name="chore[family_member_id]" id="<%= f.id%>" value="<%= f.id%>"><%= f.name %></option>
   <% end %>
 </select>
 
