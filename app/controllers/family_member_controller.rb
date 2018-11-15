@@ -1,55 +1,55 @@
 require 'pry'
 class FamilyMemberController < ApplicationController
-  get '/family_member' do
+  get '/family_members' do
     @family_member = FamilyMember.all
-    erb :'/family_member/new'
+    erb :'/family_members/new'
   end
 
-  get '/family_member/new' do
+  get '/family_members/new' do
     if logged_in?
       # @family_member = FamilyMember.all
-      erb :'/family_member/new'
+      erb :'/family_members/new'
     else
       redirect to '/'
     end
   end
 
-  get '/family_member/:id/edit' do
+  get '/family_members/:id/edit' do
     @family_member = FamilyMember.find(params[:id])
     # @family_member = current_user.family_members.find(params[:id])
-    erb :'family_member/edit'
+    erb :'family_members/edit'
   end
 
-  post '/family_member/:id' do
+  post '/family_members/:id' do
     # restful version of post creates wihtout id
     # post fmaily_members
     @family_member = FamilyMember.find(params[:id])
-    redirect "/family_member/#{@family_member.id}"
+    redirect "/family_members/#{@family_member.id}"
   end
 
-  patch '/family_member/:id' do
+  patch '/family_members/:id' do
     @family_member = FamilyMember.find(params[:id])
     @family_member.update(params[:family_member])
-    redirect "/family_member/#{@family_member.id}"
+    redirect "/family_members/#{@family_member.id}"
   end
 
-  get '/family_member/:id' do
+  get '/family_members/:id' do
     @family_member = FamilyMember.find(params[:id])
-    erb :'/family_member/show'
+    erb :'/family_members/show'
   end
 
-  post '/family_member' do
+  post '/family_members' do
     @family_member = current_user.family_members.build(params)
     @family_member.save
-    redirect("/family_member/#{@family_member.id}")
+    redirect("/family_members/#{@family_member.id}")
   end
 
-  delete '/family_member/:id' do
+  delete '/family_members/:id' do
     if logged_in?
       @family_member = FamilyMember.find_by_id(params[:id])
       # @family_member = current_user.FamilyMember.find_by_slug(params[:slug])
       @family_member.destroy
-      redirect to '/family_member/new'
+      redirect to '/family_members/new'
     else
       erb :'users/login'
     end
