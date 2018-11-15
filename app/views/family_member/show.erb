@@ -1,17 +1,17 @@
 <h1><%= @family_member.name%></h1>
 
-<div><button><a href='/family_member/<%=@family_member.id%>/edit' class="button"> Edit </a></button>
+<div><button><a href='/family_members/<%=@family_member.id%>/edit' class="button"> Edit </a></button>
 
-<form method='POST' action="/family_member/<%=@family_member.id%>">
+<form method='POST' action="/family_members/<%=@family_member.id%>">
   <input id='hidden' type='hidden' name='_method' value='DELETE'>
   <input type='submit' value='Delete Family Member'>
 </form>
 
-<form  method = 'GET' action='/chore/new'>
+<form  method = 'GET' action='/chores/new'>
     <input type="submit" value="Assign Chore" />
 </form>
 
-<form method='GET' action='/family_member/new'>
+<form method='GET' action='/family_members/new'>
   <input type='submit' value='Create Another Family Member'>
 </form>
 <!-- <a href='/chore/new' class="button"> Assign Chores </a></button> -->
