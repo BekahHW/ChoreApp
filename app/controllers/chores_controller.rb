@@ -17,6 +17,8 @@ class ChoreController < ApplicationController
   get '/chores/:id/edit' do
     if logged_in?
       @chore = Chore.find(params[:id])
+      @family_member = current_user.family_members.all
+
       erb :'chores/edit'
     end
   end
