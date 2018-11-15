@@ -24,10 +24,10 @@ class ChoreController < ApplicationController
 
 
 
-  # post '/chore/:id' do
-  #   @chore = Chore.find(params[:id])
-  #   redirect "chore/#{@chore.id}"
-  # end
+  post '/chores/:id' do
+    @chore = Chore.find(params[:id])
+    redirect "chores/#{@chore.id}"
+  end
 
   patch '/chores/:id' do
     @chore = Chore.find(params[:id])
@@ -50,10 +50,11 @@ class ChoreController < ApplicationController
       if params[:chore] == ""
         redirect '/chores/new'
       end
-      @family_member = FamilyMember.create(params['family_member'])
+      # @family_member = FamilyMember.create(params['family_member'])
       # @family_member.save
       @chore = Chore.create(params[:chore])
-      redirect "chores/#{@chore.id}"
+
+      redirect "/chores/#{@chore.id}"
     end
   end
 
