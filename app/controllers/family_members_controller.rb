@@ -9,12 +9,6 @@ class FamilyMemberController < ApplicationController
   get '/family_members/new' do
     redirect_if_not_logged_in
     erb :'/family_members/new'
-    # if logged_in?
-    #   # @family_member = FamilyMember.all
-    #   erb :'/family_members/new'
-    # else
-    #   redirect to '/'
-    # end
   end
 
   get '/family_members/:id/edit' do
