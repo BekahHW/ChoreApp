@@ -19,13 +19,9 @@ class ChoreController < ApplicationController
     if logged_in?
       @chore = Chore.find(params[:id])
       @family_member = current_user.family_members.all
-
       erb :'chores/edit'
     end
   end
-
-
-
 
   post '/chores/:id' do
     redirect_if_not_logged_in
@@ -35,16 +31,13 @@ class ChoreController < ApplicationController
 
   patch '/chores/:id' do
     redirect_if_not_logged_in
-
     @chore = Chore.find(params[:id])
-
     redirect "chores/#{@chore.id}"
   end
 
   get '/chores/:id' do
     if logged_in?
       @chore = Chore.find(params[:id])
-
       erb :'/chores/show'
     else
       redirect '/chores'
@@ -56,10 +49,7 @@ class ChoreController < ApplicationController
       if params[:chore] == ""
         redirect '/chores/new'
       end
-      # @family_member = FamilyMember.create(params['family_member'])
-      # @family_member.save
       @chore = Chore.create(params[:chore])
-
       redirect "/chores/#{@chore.id}"
     end
   end
