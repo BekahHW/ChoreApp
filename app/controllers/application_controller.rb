@@ -18,7 +18,7 @@ class ApplicationController < Sinatra::Base
 
     def redirect_if_not_logged_in
       if !logged_in?
-        redirect "/login?error=Please log in first"
+        redirect "/users/failure?error=Please log in first"
       end
     end
 

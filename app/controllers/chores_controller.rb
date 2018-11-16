@@ -1,6 +1,7 @@
 require 'pry'
 class ChoreController < ApplicationController
   get '/chores' do
+    redirect_if_not_logged_in
     @chore = Chore.all
     erb :'chores/index'
   end
@@ -27,11 +28,14 @@ class ChoreController < ApplicationController
 
 
   post '/chores/:id' do
+    redirect_if_not_logged_in
     @chore = Chore.find(params[:id])
     redirect "chores/#{@chore.id}"
   end
 
   patch '/chores/:id' do
+    redirect_if_not_logged_in
+
     @chore = Chore.find(params[:id])
 
     redirect "chores/#{@chore.id}"
