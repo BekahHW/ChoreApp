@@ -7,20 +7,16 @@ class ChoreController < ApplicationController
   end
 
   get '/chores/new' do
-    if logged_in?
-      @family_member = current_user.family_members.all
-      erb :'/chores/new'
-    else
-      redirect to '/'
-    end
+    redirect_if_not_logged_in
+    @family_member = current_user.family_members.all
+    erb :'/chores/new'
   end
 
   get '/chores/:id/edit' do
-    if logged_in?
-      @chore = Chore.find(params[:id])
-      @family_member = current_user.family_members.all
-      erb :'chores/edit'
-    end
+    redirect_if_not_logged_in
+    @chore = Chore.find(params[:id])
+    @family_member = current_user.family_members.all
+    erb :'chores/edit'
   end
 
   post '/chores/:id' do
@@ -45,23 +41,19 @@ class ChoreController < ApplicationController
   end
 
   post '/chores' do
-    if logged_in?
-      if params[:chore] == ""
-        redirect '/chores/new'
-      end
-      @chore = Chore.create(params[:chore])
-      redirect "/chores/#{@chore.id}"
+    redirect_if_not_logged_in
+    if params[:chore] == ""
+      redirect '/chores/new'
     end
+    @chore = Chore.create(params[:chore])
+    redirect "/chores/#{@chore.id}"
   end
 
   delete '/chores/:id' do
-    if logged_in?
-      @chore= Chore.find(params[:id])
-      @chore.destroy
-      redirect to '/chores/new'
-    else
-      erb :'users/login'
-    end
+    redirect_if_not_logged_in
+    @chore= Chore.find(params[:id])
+    @chore.destroy
+    redirect to '/chores/new'
   end
 
 
