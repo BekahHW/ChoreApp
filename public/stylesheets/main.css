@@ -1,34 +1,6 @@
-/* Nav */
-#nav_bar {
-    color: black;
-    width: 100%;
-    list-style: none;
-    margin: 0 2px;
-    padding: 0;
-    display: flex;
-    justify-content: space-around;
-    font-family: 'Gudea', sans-serif;
-    font-weight: bold;
-    background-color: floralwhite;
-    font-size: 1.5em;
-}
 
 @media screen {
   /* --- Reset Styles --- */
-
-  #nav_bar {
-      color: black;
-      width: 100%;
-      list-style: none;
-      margin: 0 2px;
-      padding: 0;
-      display: flex;
-      justify-content: space-around;
-      font-family: 'Gudea', sans-serif;
-      font-weight: bold;
-      background-color: floralwhite;
-      font-size: 1.5em;
-  }
   * {
     list-style: none;
     margin: 0;
@@ -47,8 +19,6 @@
     font-family: Sans-Serif;
     line-height: 18px;
   }
-
-
 
   .wrapper {
     background: #fff;
