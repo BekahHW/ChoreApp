@@ -13,24 +13,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <link rel="stylesheet" href="/stylesheets/main.css" />
+    <link rel="stylesheet" href="/stylesheets/nav.css" />
+
   </head>
   <body>
+    <nav id="nav_bar">
+      <% if logged_in? %>
 
+        <a href='/family_members/new'> Create Family Member </a>
+        <a href='/chores/new'> Create Chore</a>
+
+        <a href='/logout'> Log Out </a>
+
+      <% else %>
+        <a href='/users/new'>Sign Up</a>
+        <a href='users/login'> Sign In </a>
+      <%end %>
+
+   </nav>
     <div class="wrapper">
-      <nav>
-       <% if logged_in? %>
 
-         <a href='/family_members/new'> Create Family Member </a>
-         <a href='/chores/new'> Create Chore</a>
-
-         <a href='/logout'> Log Out </a>
-
-       <% else %>
-         <a href='/users/new'>Sign Up</a>
-         <a href='users/login'> Sign In </a>
-       <%end %>
-
-     </nav>
         <%= yield %>
 
       <footer class="branding">
