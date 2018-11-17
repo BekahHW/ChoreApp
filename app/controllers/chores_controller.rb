@@ -19,12 +19,6 @@ class ChoreController < ApplicationController
     erb :'chores/edit'
   end
 
-  post '/chores/:id' do
-    redirect_if_not_logged_in
-    @chore = Chore.find(params[:id])
-    redirect "chores/#{@chore.id}"
-  end
-
   patch '/chores/:id' do
     redirect_if_not_logged_in
     @chore = Chore.find(params[:id])
