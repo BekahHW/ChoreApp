@@ -29,7 +29,9 @@ class FamilyMemberController < ApplicationController
   get '/family_members/:id' do
     redirect_if_not_logged_in
     @family_member = FamilyMember.find(params[:id])
-    erb :'/family_members/show'
+    if @family_member.user_id == current_user.id
+      erb :'/family_members/show'
+    end
   end
 
   post '/family_members' do
