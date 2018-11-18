@@ -14,7 +14,9 @@ class FamilyMemberController < ApplicationController
   get '/family_members/:id/edit' do
     redirect_if_not_logged_in
     @family_member = FamilyMember.find(params[:id])
-    erb :'family_members/edit'
+    if @family_member.user_id == current_user.id
+      erb :'family_members/edit'
+    end
   end
 
   patch '/family_members/:id' do
