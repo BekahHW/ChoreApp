@@ -1,8 +1,6 @@
-require 'pry'
 class FamilyMemberController < ApplicationController
   get '/family_members' do
     redirect_if_not_logged_in
-    @family_member = FamilyMember.all
     erb :'/family_members/new'
   end
 
