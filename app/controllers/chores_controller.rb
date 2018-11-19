@@ -1,4 +1,3 @@
-require 'pry'
 class ChoreController < ApplicationController
   get '/chores' do
     redirect_if_not_logged_in
