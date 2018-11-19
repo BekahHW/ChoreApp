@@ -34,7 +34,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect '/family_members/new'
     else
-      erb :'/users/failure'
+      redirect '/users/failure'
     end
   end
 
@@ -46,7 +46,6 @@ class UsersController < ApplicationController
       redirect '/users/login'
     end
   end
-
 
   get '/users/:id' do
     @user = User.find_by_id(params[:id])
