@@ -2,7 +2,7 @@ class ChoreController < ApplicationController
   get '/chores' do
     redirect_if_not_logged_in
     @chore = Chore.all
-    erb :'chores/index'
+    erb :'/chores/new'
   end
 
   get '/chores/new' do
