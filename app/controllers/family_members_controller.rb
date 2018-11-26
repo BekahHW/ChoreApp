@@ -29,6 +29,8 @@ class FamilyMemberController < ApplicationController
     @family_member = FamilyMember.find(params[:id])
     if @family_member.user_id == current_user.id
       erb :'/family_members/show'
+    else
+      erb :'/users/failure'
     end
   end
 
