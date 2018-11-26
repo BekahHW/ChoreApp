@@ -17,18 +17,22 @@ class UsersController < ApplicationController
   end
 
   post '/users/new' do
-    if params[:username] == "" || params[:password] == ""
-      redirect to '/users/new'
-    else
+    if params[:username] != "" && params[:password] != "" &&
+      User.all.all? {|e| e.username != params[:username] }
+
       @user = User.new(:username => params[:username], :email => params[:email], :password => params[:password])
       session[:user_id] = @user.id
       @user.save
       redirect '/family_members/new'
+    else
+      redirect to '/users/new'
     end
   end
 
   post '/users/login' do
     @user = User.find_by(:username => params[:username])
+
+    # unique username
 
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
@@ -49,7 +53,7 @@ class UsersController < ApplicationController
 
   get '/users/:id' do
     @user = User.find_by_id(params[:id])
-    if !@user.nil? && @user == current_user
+    if @user && @user == current_user
       erb :'/users/show'
     else redirect '/users/login'
     end
