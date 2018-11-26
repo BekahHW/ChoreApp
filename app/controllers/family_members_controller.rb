@@ -13,7 +13,7 @@ class FamilyMemberController < ApplicationController
     redirect_if_not_logged_in
     @family_member = FamilyMember.find(params[:id])
     if @family_member.user_id == current_user.id
-      erb :'family_members/edit'
+      erb :'/family_members/edit'
     else
       erb :'/users/failure'
     end
