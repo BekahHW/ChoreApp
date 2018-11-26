@@ -17,6 +17,8 @@ class ChoreController < ApplicationController
     @family_member = current_user.family_members.all
     if @chore.family_member.user_id == current_user.id
       erb :'chores/edit'
+    else
+      erb :'users/failure'
     end
   end
 
@@ -27,13 +29,12 @@ class ChoreController < ApplicationController
   end
 
   get '/chores/:id' do
-    if logged_in?
-      @chore = Chore.find(params[:id])
-      if @chore.family_member.user_id == current_user.id
-        erb :'/chores/show'
-      end
+    redirect_if_not_logged_in
+    @chore = Chore.find(params[:id])
+    if @chore.family_member.user_id == current_user.id
+      erb :'/chores/show'
     else
-      redirect '/chores'
+      erb :'/users/failure'
     end
   end
 
