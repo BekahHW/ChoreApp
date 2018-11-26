@@ -1,19 +1,22 @@
 class UsersController < ApplicationController
 
   get '/users/login' do
-    if !session[:user_id]
+    if !logged_in?
       erb :'/users/login'
     else
-      redirect '/family_member'
+      redirect '/family_members/new'
     end
   end
 
   get '/users/new' do
-    if !session[:user_id]
-      erb :'/users/new'
-    else
-      redirect to '/chores'
-    end
+    # if !session[:user_id]
+    #   erb :'/users/new'
+    # else
+    #   redirect to
+    redirect_if_not_logged_in
+
+    erb :'/chores'
+    # end
   end
 
   post '/users/new' do
@@ -31,9 +34,6 @@ class UsersController < ApplicationController
 
   post '/users/login' do
     @user = User.find_by(:username => params[:username])
-
-    # unique username
-
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
       redirect '/family_members/new'
