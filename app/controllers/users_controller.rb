@@ -9,26 +9,22 @@ class UsersController < ApplicationController
   end
 
   get '/users/new' do
-    # if !session[:user_id]
-    #   erb :'/users/new'
-    # else
-    #   redirect to
-    redirect_if_not_logged_in
-
-    erb :'/chores'
-    # end
+    if !logged_in?
+      erb :'/users/new'
+    else
+      redirect to '/family_members/new'
+    end
   end
 
   post '/users/new' do
     if params[:username] != "" && params[:password] != "" &&
-      User.all.all? {|e| e.username != params[:username] }
-
+      User.all.all?  {|e| e.username != params[:username] }
       @user = User.new(:username => params[:username], :email => params[:email], :password => params[:password])
       session[:user_id] = @user.id
       @user.save
       redirect '/family_members/new'
     else
-      redirect to '/users/new'
+      redirect '/users/login'
     end
   end
 
